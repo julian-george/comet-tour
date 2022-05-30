@@ -12,11 +12,15 @@ interface CometProps {
 }
 
 const Comet: FC<CometProps> = ({ meshRef }) => {
-  const cometObj = useLoader(OBJLoader, "./comet_67p.obj");
+  const cometObj = useLoader(
+    OBJLoader,
+    "https://comet-obj.s3.us-east-2.amazonaws.com/comet_67p.obj"
+  );
   const cometMap = useLoader(TextureLoader, "./comet_texture.jpg");
   const geometry = useMemo(() => {
     let g;
     cometObj.traverse((c) => {
+      console.log(c.type);
       if (c.type === "Mesh") g = (c as Mesh).geometry;
     });
     return g;
@@ -27,7 +31,6 @@ const Comet: FC<CometProps> = ({ meshRef }) => {
       rotation={new Euler(0, 0, -AXIAL_TILT)}
       ref={meshRef}
     >
-      {/* <meshBasicMaterial map={cometMap} /> */}
       <meshPhongMaterial map={cometMap} />
     </mesh>
   );
