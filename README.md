@@ -1,6 +1,6 @@
 ## Summary
 
-This is a small static webapp made for @chenmasterandrew and I's final astronomy project. It's a rudimentary comet simulation made with THREE.js, and more specifically three-fiber and three-drei. We imported a model of a real comet nucleus (Comet 67P, photographed by the Rosetta spacecraft) and simulated its trails and its orbit accordingly
+This is a small static webapp made for @chenmasterandrew and I's final astronomy project. It's a rudimentary comet simulation made with THREE.js, and more specifically three-fiber and three-drei. We imported a model of a real comet nucleus (Comet 67P, photographed by the Rosetta spacecraft) and simulated its trails and its orbit accordingly.
 
 ## Running locally
 
