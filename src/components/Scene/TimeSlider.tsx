@@ -38,7 +38,7 @@ const TimeSlider: FC<TimeSliderProps> = ({
       <h4 id="slider-title">Time Acceleration</h4>
       <Slider
         id="slider-control"
-        defaultValue={100}
+        defaultValue={1}
         onChange={onChange}
         value={sliderValue}
         disabled={!loaded}
