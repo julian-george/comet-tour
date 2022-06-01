@@ -1,10 +1,10 @@
 import { FC, Ref } from "react";
 import { Vector3, Color, Mesh } from "three";
 
-// Diameter of the sun (in 100s of kilometers)
-const SUN_DIAMETER = 13927;
+// Diameter of the sun (in ~100s of kilometers)
+const SUN_DIAMETER = 139270 / 5;
 // Color of the sun model. Yellow for now, but would actually be white in space
-const SUN_COLOR = new Color(0xffdd00);
+const SUN_COLOR = new Color(0xffffaa);
 
 interface SunProps {
   meshRef: Ref<Mesh>;
@@ -13,7 +13,11 @@ interface SunProps {
 const Sun: FC<SunProps> = ({ meshRef }) => {
   return (
     <>
-      <mesh scale={SUN_DIAMETER} ref={meshRef} position={new Vector3(0, 0, 0)}>
+      <mesh
+        scale={SUN_DIAMETER}
+        ref={meshRef}
+        position={new Vector3(0, 0, 9000000)}
+      >
         <sphereBufferGeometry />
         <meshPhongMaterial emissive={SUN_COLOR} />\
         <pointLight

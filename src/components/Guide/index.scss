@@ -1,0 +1,57 @@
+#guide {
+  position: absolute;
+  z-index: 8;
+  color: #222222;
+  bottom: 0;
+  right: 0;
+  min-height: 64px;
+  width: 35%;
+  min-width: 160px;
+  background-color: rgba(255, 255, 255, 0.8);
+  flex-direction: column;
+  padding: 16px 36px 24px;
+  transition: height 200ms;
+  border-top-left-radius: 4px;
+}
+#guide-body {
+  text-align: left;
+  font-size: 14px;
+  max-height: 240px;
+  overflow: scroll;
+  // box-shadow: inset 0px -4px 4px 0px rgba(15, 15, 15, 0.2);
+  padding: 4px 0;
+  line-height: 1.4;
+}
+
+#nav-button-row {
+  flex-direction: "row";
+  width: "100%";
+  justify-content: "space-between";
+  margin-top: 16px;
+  height: 36px;
+}
+
+button {
+  padding: 8px 16px;
+  height: 36px;
+  width: 64px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: background-color 100ms;
+  &:hover {
+    background-color: #dddddd;
+  }
+  &:active {
+    background-color: #cccccc;
+  }
+  &:disabled {
+    pointer-events: none;
+  }
+}
+img {
+  margin: 12px 24px;
+  width: calc(100% - 48px);
+}

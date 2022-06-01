@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.8.2",
     "@react-three/drei": "^9.11.3",
     "@react-three/fiber": "^8.0.19",
     "@react-three/postprocessing": "^2.3.2",
@@ -13,6 +16,8 @@
     "@types/node": "^16.11.36",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
+    "canvas-sketch-util": "^1.10.0",
+    "lodash": "^4.17.21",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
@@ -46,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.182",
     "@types/three": "^0.140.0"
   }
 }
