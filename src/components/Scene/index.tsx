@@ -1,15 +1,14 @@
-import React, { FC, Suspense, useMemo, useRef, useState } from "react";
+import { FC, Suspense, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import "./index.scss";
 import Skybox from "./Skybox";
-import { Html, OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import Comet from "./Comet";
 import Sun from "./Sun";
 import { Color, InstancedMesh, Mesh, Object3D, Vector3 } from "three";
 import DustCloud from "./DustCloud";
 import { absRange, randomRange } from "../../util/random";
 import Loader from "./Loader";
-import TimeSlider from "./TimeSlider";
 
 // Distance from the sun at its furthest (in 100s of kilometers)
 const APHELION_DIST = 8501497.39;
@@ -197,9 +196,6 @@ const Scene: FC<SceneProps> = ({
       });
       dustCloudRef.current.instanceMatrix.needsUpdate = true;
     }
-    const minIonTrailAngle = (dustTrailAngle + Math.PI / 2) % (Math.PI * 2);
-    const minIonXMagnitude = Math.sin(minIonTrailAngle);
-    const minIonZMagnitude = Math.cos(minIonTrailAngle);
     const maxIonTrailAngle = (dustTrailAngle + Math.PI / 5) % (Math.PI * 2);
     const maxIonXMagnitude = Math.sin(maxIonTrailAngle);
     const maxIonZMagnitude = Math.cos(maxIonTrailAngle);
@@ -212,13 +208,6 @@ const Scene: FC<SceneProps> = ({
           0,
           maxIonZMagnitude
         ).add(exitVector);
-        // .add(
-        //   new Vector3(
-        //     (Math.min(time / 100, 1) * Math.PI) / 6,
-        //     0,
-        //     (Math.min(time / 100, 1) * Math.PI) / 6
-        //   )
-        // );
         let newX = x + speed * time * adjustedVector.x;
         let newY = y + speed * time * adjustedVector.y;
         let newZ = z + speed * time * adjustedVector.z;
@@ -287,13 +276,6 @@ const Scene: FC<SceneProps> = ({
         count={ION_PARTICLE_NUM}
         color={new Color(0x8888ff)}
       />
-      {/* <EffectComposer>
-            <Bloom
-              luminanceThreshold={0.5}
-              luminanceSmoothing={0.9}
-              height={300}
-            />
-          </EffectComposer> */}
     </>
   );
 };

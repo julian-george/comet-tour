@@ -1,4 +1,4 @@
-import { Html, useProgress } from "@react-three/drei";
+import { Html } from "@react-three/drei";
 import { FC } from "react";
 
 interface LoaderProps {
@@ -19,7 +19,7 @@ const Loader: FC<LoaderProps> = ({ modelName }) => {
       >
         <div>{modelName} Model Loading...</div>
         <br />
-        {modelName == "Comet" && (
+        {modelName === "Comet" && (
           <div>
             This model's file size is very large. Depending on your internet
             speed, it may take several minutes to download.

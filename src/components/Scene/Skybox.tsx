@@ -21,7 +21,6 @@ const Skybox: FC<SkyboxProps> = ({ meshRef }) => {
       >
         <sphereBufferGeometry />
         <meshBasicMaterial map={spaceTexture} side={BackSide} />
-        {/* <meshStandardMaterial map={spaceTexture} /> */}
       </mesh>
     </>
   );
