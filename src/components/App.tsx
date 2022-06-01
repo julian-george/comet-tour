@@ -48,7 +48,10 @@ export const stages: GuideStage[] = [
         nucleus of the comet remains only a few kilometers across [5]. The
         expanded coma of the comet can form the iconic visible tails of a comet,
         potentially extending several million kilometers away from the nucleus.
-        <img src="https://photojournal.jpl.nasa.gov/jpegMod/PIA17485_modest.jpg" />
+        <img
+          src="https://photojournal.jpl.nasa.gov/jpegMod/PIA17485_modest.jpg"
+          alt="Halley's Comet, its nucleus clearly visible with a bright tail shooting out."
+        />
         "In 1986, the European spacecraft Giotto became one of the first
         spacecraft ever to encounter and photograph the nucleus of a comet,
         passing and imaging Halley's nucleus as it receded from the sun. Data

@@ -12,15 +12,16 @@ const Loader: FC<LoaderProps> = ({ modelName }) => {
         style={{
           zIndex: 10,
           color: "white",
-          width: 600,
+          width: 240,
           maxWidth: "100%",
           textAlign: "center",
+          userSelect: "none",
         }}
       >
         <div>{modelName} Model Loading...</div>
         <br />
         {modelName === "Comet" && (
-          <div>
+          <div style={{ userSelect: "none" }}>
             This model's file size is very large. Depending on your internet
             speed, it may take several minutes to download.
           </div>

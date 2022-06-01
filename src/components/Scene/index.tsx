@@ -30,20 +30,22 @@ const ROTATION_PERIOD = 44655.48;
 const ROT_ANGULAR_VELOCITY = (2 * Math.PI) / ROTATION_PERIOD;
 
 // Number of particles in the dust cloud
-const DUST_PARTICLE_NUM = 80000;
+const DUST_PARTICLE_NUM = 100000;
 // Number of particles in the ion cloud
-const ION_PARTICLE_NUM = 55000;
+const ION_PARTICLE_NUM = 65000;
 // Radius (from the center of the comet) that the dust particles can originate from
 const DUST_CLOUD_RADIUS = 60000;
 // Radius that the ion particles can originate from
 const ION_CLOUD_RADIUS = 35000;
 // The maximum amount of frames that a particle travels for before being respawned around the comet
-const MAX_TAIL_TIME = 10000;
+const MAX_TAIL_TIME = 25000;
 // Probability that at each step a particle will "decay", being respawned at the comet.
 // Helps make the tail taper off instead of maintaining a consistent density
 const DECAY_PROBABILITY = 0.00001;
 // Range of random displacement when particles are spawned - prevents cloud from being perfectly spherical
 const CLOUD_NOISE = 100;
+// Maximum speed a cloud particle can travel
+const MAX_PARTICLE_SPEED = 100000;
 
 // Initial distance of the camera from the comet
 const DEFAULT_CAMERA_DIST = 20000;
@@ -79,10 +81,10 @@ const Scene: FC<SceneProps> = ({
   const dustParticles = useMemo(() => {
     const temp = [];
     for (let i = 0; i < DUST_PARTICLE_NUM; i++) {
-      const time = randomRange(0, MAX_TAIL_TIME);
+      const time = randomRange(0, MAX_TAIL_TIME / (timeAcceleration / 100));
       const speed = Math.min(
         randomRange(4 * timeAcceleration, 6 * timeAcceleration),
-        10000
+        MAX_PARTICLE_SPEED
       );
       const x = absRange(DUST_CLOUD_RADIUS) + absRange(CLOUD_NOISE);
       const y =
@@ -103,10 +105,10 @@ const Scene: FC<SceneProps> = ({
   const ionParticles = useMemo(() => {
     const temp = [];
     for (let i = 0; i < ION_PARTICLE_NUM; i++) {
-      const time = randomRange(0, MAX_TAIL_TIME);
+      const time = randomRange(0, MAX_TAIL_TIME / (timeAcceleration / 100));
       const speed = Math.min(
         randomRange(9 * timeAcceleration, 14 * timeAcceleration),
-        10000
+        MAX_PARTICLE_SPEED
       );
       const x = absRange(ION_CLOUD_RADIUS) + absRange(CLOUD_NOISE);
       const y =
@@ -166,7 +168,10 @@ const Scene: FC<SceneProps> = ({
         let newY = y + speed * time * exitVector.y;
         let newZ = z + speed * time * (dustZMagnitude + exitVector.z);
 
-        if (time >= MAX_TAIL_TIME || Math.random() < DECAY_PROBABILITY) {
+        if (
+          time >= MAX_TAIL_TIME / (timeAcceleration / 100) ||
+          Math.random() < DECAY_PROBABILITY
+        ) {
           particle.time = 0;
           particle.x = absRange(DUST_CLOUD_RADIUS) + absRange(CLOUD_NOISE);
           particle.y =
@@ -212,7 +217,10 @@ const Scene: FC<SceneProps> = ({
         let newY = y + speed * time * adjustedVector.y;
         let newZ = z + speed * time * adjustedVector.z;
 
-        if (time >= MAX_TAIL_TIME || Math.random() < DECAY_PROBABILITY) {
+        if (
+          time >= MAX_TAIL_TIME / (timeAcceleration / 100) ||
+          Math.random() < DECAY_PROBABILITY
+        ) {
           particle.time = 0;
           particle.x = absRange(ION_CLOUD_RADIUS) + absRange(CLOUD_NOISE);
           particle.y =

@@ -24,7 +24,7 @@ const TimeSlider: FC<TimeSliderProps> = ({
             MIN_TIME_ACCELERATION
         );
     },
-    [setTimeAcceleration]
+    [setTimeAcceleration, loaded]
   );
   const sliderValue = useMemo(
     () =>
@@ -35,7 +35,7 @@ const TimeSlider: FC<TimeSliderProps> = ({
   );
   return (
     <div id="slider-container">
-      <h3 id="slider-title">Time Acceleration</h3>
+      <h4 id="slider-title">Time Acceleration</h4>
       <Slider
         id="slider-control"
         defaultValue={100}
